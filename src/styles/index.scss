@@ -1,6 +1,92 @@
-$body-color: slateblue;
+$body-color: rgba(#fff, 0.3);
+$body-bg: #273139;
+
+$primary: #ff5127;
+
+html {
+  background-color: $body-bg;
+}
 
 body {
   color: $body-color;
-  font-family: sans-serif;
+  font-family: 'Fira Code', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $body-color;
+  text-decoration: none;
+  transition: color ease 0.2s;
+
+  &:hover {
+    color: white;
+  }
+}
+
+header {
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  display: flex;
+  align-items: center;
+
+  nav {
+    height: 54px;
+    background: rgba(#fff, 0.05);
+    border-radius: 54px;
+    padding-left: 20px;
+    margin-left: -20px;
+    font-size: 16px;
+  }
+
+  [href] {
+    padding: 10px 15px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 7px;
+
+    li {
+      display: inline-block;
+      margin: 10px 5px;
+
+      &:last-child [href] {
+        border-radius: 24px;
+        background: rgba(#fff, 0.05);
+      }
+    }
+  }
+}
+
+section#home {
+  padding-top: 200px;
+  height: calc(100vh - 200px);
+  text-align: center;
+
+  > * {
+    flex: 0 0 100%;
+  }
+
+  h1 {
+    color: white;
+    font-size: 44px;
+    margin-bottom: 0;
+
+    span {
+      color: $primary;
+    }
+  }
+
+  canvas {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
 }
