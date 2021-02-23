@@ -26,6 +26,7 @@ a {
 
 header {
   position: fixed;
+  z-index: 100;
   left: 40px;
   top: 40px;
   display: flex;
@@ -64,11 +65,13 @@ header {
 
 section#home {
   padding-top: 200px;
-  height: calc(100vh - 200px);
+  height: calc(300vh - 200px);
   text-align: center;
 
   > * {
     flex: 0 0 100%;
+    position: relative;
+    z-index: 5;
   }
 
   h1 {
@@ -82,11 +85,9 @@ section#home {
   }
 
   canvas {
-    pointer-events: none;
-    position: absolute;
+    position: fixed;
+    z-index: 0;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
   }
 }
