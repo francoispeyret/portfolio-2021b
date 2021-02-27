@@ -1,7 +1,7 @@
 {
-  "name": "webpack-starter",
+  "name": "portfolio-2021b",
   "version": "1.0.0",
-  "description": "A light foundation for your next frontend project based on webpack.",
+  "description": "",
   "scripts": {
     "lint": "npm run lint:styles; npm run lint:scripts",
     "lint:styles": "stylelint src",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wbkd/webpack-starter.git"
+    "url": "git+https://github.com/francoispeyret/portfolio-2021b.git"
   },
   "keywords": [
     "webpack",
@@ -21,11 +21,8 @@
     "javascript",
     "webdev"
   ],
-  "author": "webkid.io",
+  "author": "François Peyret",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wbkd/webpack-starter/issues"
-  },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
