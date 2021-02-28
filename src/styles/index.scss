@@ -309,7 +309,7 @@ section#skills {
       width: $alertSize;
       height: $alertSize;
       background: red;
-      background: radial-gradient(rgba(255, 0, 0, 0.5) 0%, transparent 75%);
+      background: radial-gradient(rgba($primary, 0.5) 0%, transparent 75%);
       background-position: -#{$alertSize/2} -#{$alertSize/2};
       background-repeat: no-repeat;
       transform-origin: left top;

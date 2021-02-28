@@ -181,8 +181,8 @@ document.getElementById('gravity').addEventListener('click', () => {
         }, 1000);
     } else if(gravityChangingState === false) {
         world.gravity.y = 1;
-        document.body.classList.remove('active');
-        document.getElementById('gravity').classList.remove('gravity-zero');
+        document.body.classList.remove('gravity-alert');
+        document.getElementById('gravity').classList.remove('active');
     }
 });
 
