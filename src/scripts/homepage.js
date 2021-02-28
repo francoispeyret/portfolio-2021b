@@ -174,14 +174,14 @@ document.getElementById('gravity').addEventListener('click', () => {
         world.gravity.y = -0.25;
         gravityChangingState = true;
         document.body.classList.add('gravity-alert');
-        document.getElementById('gravity').classList.add('gravity-zero');
+        document.getElementById('gravity').classList.add('active');
         setTimeout(()=> {
             world.gravity.y = 0;
             gravityChangingState = false;
         }, 1000);
     } else if(gravityChangingState === false) {
         world.gravity.y = 1;
-        document.body.classList.remove('gravity-alert');
+        document.body.classList.remove('active');
         document.getElementById('gravity').classList.remove('gravity-zero');
     }
 });
