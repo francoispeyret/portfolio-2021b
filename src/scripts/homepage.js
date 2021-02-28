@@ -44,7 +44,7 @@ let ballsStack = Composites.stack(
         let ballOptions = {
             restitution: 0.5,
             stiffness: 0.5,
-            density: 10 ,
+            density: 10,
             render: {
                 fillStyle: '#222',
                 strokeStyle: null
@@ -121,20 +121,22 @@ Matter.Events.on(mouseConstraint, 'mousemove', function (event) {
     }
 });
 
-let aboutEl = document.querySelector('section#about .block');
+let aboutEl = document.getElementById('about-img');
 let aboutBlock = Bodies.rectangle(
-    window.innerWidth*0.5,
+    aboutEl.getBoundingClientRect().left,
     aboutEl.getBoundingClientRect().top + 315,
-    1150,
-    630, {
+    aboutEl.offsetWidth,
+    aboutEl.offsetHeight,
+    {
         friction: 0,
         isStatic: true,
-        label: 'block',
+        label: 'blockAbout',
         render: {
             fillStyle: 'transparent',
             strokeStyle: null
         }
     });
+
 World.add(world, aboutBlock);
 
 let skillEls = document.querySelectorAll('section#skills .skill');
@@ -187,7 +189,7 @@ document.getElementById('gravity').addEventListener('click', () => {
 window.addEventListener('scroll', function(e){
     let aboutBlockPosY = aboutEl.getBoundingClientRect().top + 315;
     Matter.Body.set(aboutBlock, 'position', {
-        x: window.innerWidth*0.5 - 5,
+        x: aboutEl.getBoundingClientRect().left + aboutEl.offsetWidth/2,
         y: aboutBlockPosY
     });
     for(let i = 0; i < skillsStack.length; i++) {
