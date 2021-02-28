@@ -42,7 +42,8 @@ let ballsStack = Composites.stack(
         let randomExpo = -Math.log(Math.random());
         let radius = randomExpo * 25 + 10;
         let ballOptions = {
-            restitution: 0.9,
+            restitution: 0.5,
+            stiffness: 0.5,
             density: 10 ,
             render: {
                 fillStyle: '#222',
@@ -61,6 +62,7 @@ World.add(world, ballsStack);
 
 let ballOneOptions = {
     radius: 20,
+    stiffness: 0.5,
     isStatic: false,
     render: {
         fillStyle: '#fff',
@@ -110,6 +112,15 @@ mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
 
 render.mouse = mouse;
 
+Matter.Events.on(mouseConstraint, 'mousemove', function (event) {
+    const foundPhysics = Matter.Query.point(Matter.Composite.allBodies(world), event.mouse.position);
+    if(typeof foundPhysics[0] !== 'undefined') {
+        document.body.classList.add('body-hovered');
+    } else {
+        document.body.classList.remove('body-hovered');
+    }
+});
+
 let aboutEl = document.querySelector('section#about .block');
 let aboutBlock = Bodies.rectangle(
     window.innerWidth*0.5,
@@ -153,6 +164,25 @@ for(let i = 0; i < skillEls.length; i++) {
     ));
 }
 World.add(world, skillsStack);
+
+let gravityChangingState = false;
+document.getElementById('gravity').addEventListener('click', () => {
+    console.log(world.gravity.y);
+    if(world.gravity.y === 1) {
+        world.gravity.y = -0.25;
+        gravityChangingState = true;
+        document.body.classList.add('gravity-alert');
+        document.getElementById('gravity').classList.add('gravity-zero');
+        setTimeout(()=> {
+            world.gravity.y = 0;
+            gravityChangingState = false;
+        }, 1000);
+    } else if(gravityChangingState === false) {
+        world.gravity.y = 1;
+        document.body.classList.remove('gravity-alert');
+        document.getElementById('gravity').classList.remove('gravity-zero');
+    }
+});
 
 window.addEventListener('scroll', function(e){
     let aboutBlockPosY = aboutEl.getBoundingClientRect().top + 315;

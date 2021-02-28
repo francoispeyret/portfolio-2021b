@@ -5,3 +5,4 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 import './homepage';
+import './skills';
