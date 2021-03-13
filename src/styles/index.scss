@@ -8,12 +8,12 @@ html {
   background-color: $body-bg;
 
   &::-webkit-scrollbar {
-    background-color: transparent;
+    background-color: darken($body-bg, 10%);
     width: 12px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: darken($body-bg, 10%);
+    background-color: $gray;
     border-radius: 6px;
   }
 }
@@ -43,6 +43,19 @@ a {
   }
 }
 
+h2 {
+  color: white;
+  font-size: 62px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+p {
+  color: #949ba0;
+  font-size: 18px;
+  font-style: italic;
+}
+
 header {
   position: fixed;
   z-index: 100;
@@ -61,7 +74,8 @@ header {
 
   nav#main {
     height: 54px;
-    background: $gray;
+    background: rgba($gray, 0.75);
+    backdrop-filter: blur(15px);
     border-radius: 54px;
     font-size: 16px;
   }
@@ -76,7 +90,8 @@ header {
       height: 54px;
       width: 54px;
       border: 0;
-      background: $gray;
+      background: rgba($gray, 0.75);
+      backdrop-filter: blur(10px);
       border-radius: 54px;
       font-size: 28px;
       font-weight: 700;
@@ -132,7 +147,7 @@ header {
 
 #canvas > canvas {
   position: fixed;
-  z-index: 50;
+  z-index: -1;
   top: 0;
   left: 0;
 }
@@ -164,23 +179,101 @@ section#home {
   }
 }
 
+section#works {
+  position: relative;
+  padding: 33vh 0;
+  overflow-x: hidden;
+  text-align: center;
+
+  .swiper-container {
+    position: relative;
+    z-index: 75;
+    width: 1150px;
+    max-width: calc(100vw - 200px);
+    overflow: visible;
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    text-align: left;
+  }
+
+  .swiper-scrollbar {
+    position: absolute;
+    left: 12.5%;
+    bottom: 0;
+    display: block;
+    width: 75%;
+    height: 15px;
+    background-color: $gray;
+  }
+
+  .swiper-scrollbar-drag {
+    height: 15px;
+    background: #212a31;
+  }
+
+  h3 {
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+    margin: 1rem 0 0;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  h3,
+  p {
+    color: $body-color;
+    transition: color ease-in-out 0.3s;
+  }
+
+  .swiper-slide {
+    filter: grayscale(1);
+    opacity: 0.25;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .swiper-slide-active,
+  .swiper-slide-next {
+    opacity: 1;
+    filter: grayscale(0);
+
+    h3 {
+      transition-delay: 0.25s;
+      color: white;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    display: block;
+    height: 100%;
+    width: auto;
+    cursor: pointer;
+  }
+
+  .swiper-button-next {
+    right: -100%;
+    left: 100%;
+  }
+
+  .swiper-button-prev {
+    left: -100%;
+    right: 100%;
+  }
+}
+
 section#about {
   width: 1150px;
   max-width: calc(100vw - 200px);
   margin: 0 auto;
   padding: 33vh 0;
-
-  h2 {
-    color: white;
-    font-size: 62px;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  p {
-    color: #949ba0;
-    font-size: 18px;
-  }
 
   .block {
     position: relative;
@@ -206,9 +299,11 @@ section#about {
 }
 
 section#skills {
+  min-height: 100vh;
   width: 1150px;
   max-width: calc(100vw - 200px);
-  margin: 10vh auto 33vh;
+  padding: 10vh 0 33vh;
+  margin: 0 auto;
   text-align: center;
 
   > * {
@@ -218,9 +313,6 @@ section#skills {
   h2 {
     position: relative;
     z-index: 60;
-    color: white;
-    font-size: 72px;
-    margin-bottom: 0;
   }
 
   .skills-container {
@@ -253,6 +345,7 @@ section#skills {
         order: 2;
         font-weight: 500;
         font-size: 92px;
+        font-style: italic;
         color: white;
         margin: 1rem 0;
       }
@@ -281,8 +374,11 @@ section#skills {
   }
 }
 
+#funnel {
+  min-height: 100vh;
+}
+
 #alerts {
-  display: none;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -292,45 +388,50 @@ section#skills {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity ease-in-out 0.75s;
+  //filter: blur(15px);
 
   .gravity-alert & {
-    display: block;
+    opacity: 1;
   }
 
   .alert {
     position: fixed;
-    $alertSize: 30vw;
+    $alertSize: 75vh;
 
-    &::before,
-    &::after {
+    &::before {
       content: "";
       position: absolute;
       display: block;
       width: $alertSize;
       height: $alertSize;
-      background: red;
-      background: radial-gradient(rgba($primary, 0.5) 0%, transparent 75%);
+      background-image: radial-gradient(rgba($primary, 0.5) 0%, transparent 75%);
       background-position: -#{$alertSize/2} -#{$alertSize/2};
       background-repeat: no-repeat;
       transform-origin: left top;
-      animation: rotate linear 2s infinite;
 
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
+      .gravity-alert & {
+        animation: rotate linear 2s infinite;
       }
     }
 
     &::after {
+      content: "";
+      position: absolute;
       right: 100%;
       bottom: 100%;
+      display: block;
+      width: $alertSize;
+      height: $alertSize;
+      background-image: radial-gradient(rgba($primary, 0.5) 0%, transparent 75%);
       background-position: #{$alertSize/2} #{$alertSize/2};
+      background-repeat: no-repeat;
       transform-origin: right bottom;
+
+      .gravity-alert & {
+        animation: rotate linear 2s infinite;
+      }
     }
 
     &.one {
@@ -352,5 +453,15 @@ section#skills {
       left: 0;
       bottom: 0;
     }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

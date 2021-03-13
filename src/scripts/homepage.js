@@ -40,13 +40,13 @@ let ballsStack = Composites.stack(
     20,
     function (x,y){
         let randomExpo = -Math.log(Math.random());
-        let radius = randomExpo * 25 + 10;
+        let radius = randomExpo * 20 + 10;
         let ballOptions = {
             restitution: 0.5,
             stiffness: 0.5,
             density: 10,
             render: {
-                fillStyle: '#222',
+                fillStyle: '#212a31',
                 strokeStyle: null
             }
         };
@@ -139,33 +139,6 @@ let aboutBlock = Bodies.rectangle(
 
 World.add(world, aboutBlock);
 
-let skillEls = document.querySelectorAll('section#skills .skill');
-let skillOptions = {
-    friction: 0,
-    isStatic: true,
-    label: 'blockSkill',
-    render: {
-        fillStyle: 'transparent',
-        strokeStyle: null
-    }
-};
-let skillsStack = [];
-for(let i = 0; i < skillEls.length; i++) {
-    const skillElRoot = document.querySelector('section#skills .skill:nth-of-type('+(i+1)+')');
-    let skillSize = {
-        w: skillElRoot.offsetWidth,
-        h: skillElRoot.offsetHeight
-    };
-    let skillPos = skillElRoot.getBoundingClientRect();
-    skillsStack.push(Bodies.rectangle(
-        skillPos.left,
-        skillPos.top,
-        skillSize.w,
-        skillSize.h,
-        skillOptions
-    ));
-}
-World.add(world, skillsStack);
 
 let gravityChangingState = false;
 document.getElementById('gravity').addEventListener('click', () => {
@@ -192,14 +165,6 @@ window.addEventListener('scroll', function(e){
         x: aboutEl.getBoundingClientRect().left + aboutEl.offsetWidth/2,
         y: aboutBlockPosY
     });
-    for(let i = 0; i < skillsStack.length; i++) {
-        const skillElRoot = document.querySelector('section#skills .skill:nth-of-type('+(i+1)+')');
-        let skillPos = skillElRoot.getBoundingClientRect();
-        Matter.Body.set(skillsStack[i], 'position', {
-            x: skillPos.left + skillElRoot.offsetWidth/2,
-            y: skillPos.top + skillElRoot.offsetHeight/2
-        });
-    }
 }, { passive: true });
 
 window.addEventListener('resize', function(){
