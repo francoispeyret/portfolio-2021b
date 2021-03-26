@@ -6,19 +6,14 @@ import 'swiper/swiper.scss';
 const worksSwiper = new Swiper('.swiper-container', {
     // Optional parameters
     loop: false,
-    slidesPerView: 2,
+    slidesPerView: 1,
     hashNavigation: true,
     longSwipes: true,
+    spaceBetween: 60,
 
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-    },
-
-    mousewheel: {
-        forceToAxis: false,
-        releaseOnEdges: true,
-        eventsTarget: document.getElementById('works'),
     },
 
     // And if we need scrollbar
