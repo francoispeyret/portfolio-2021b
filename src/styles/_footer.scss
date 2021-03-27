@@ -1,0 +1,35 @@
+footer {
+  position: relative;
+  z-index: 50;
+  color: #949ba0;
+  padding: 3rem 0;
+
+  a {
+    color: #949ba0;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .container {
+    width: 1150px;
+    max-width: calc(100vw - 200px);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-right: 2rem;
+  }
+}

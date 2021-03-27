@@ -5,9 +5,12 @@ $primary: #ff5127;
 $gray: #323c43;
 
 @import "fonts";
+@import "header";
+@import "footer";
 
 html {
   background-color: $body-bg;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     background-color: darken($body-bg, 10%);
@@ -38,7 +41,7 @@ body {
 a {
   color: white;
   text-decoration: none;
-  transition: all ease 0.2s;
+  transition: color ease 0.2s, background ease 0.2s;
 
   &:hover {
     color: white;
@@ -46,6 +49,8 @@ a {
 }
 
 h2 {
+  position: relative;
+  z-index: 60;
   color: white;
   font-size: 62px;
   margin-bottom: 0;
@@ -56,95 +61,7 @@ p {
   color: #949ba0;
   font-size: 18px;
   font-style: italic;
-}
-
-header {
-  position: fixed;
-  z-index: 100;
-  top: 58px;
-  left: 0;
-  right: 0;
-
-  .container {
-    width: 1150px;
-    max-width: calc(100vw - 200px);
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    align-items: center;
-  }
-
-  nav#main {
-    height: 54px;
-    background: rgba($gray, 0.75);
-    backdrop-filter: blur(15px) brightness(1.4);
-    border-radius: 54px;
-    font-size: 16px;
-  }
-
-  nav#tools {
-    margin-left: 20px;
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 54px;
-      width: 54px;
-      border: 0;
-      background: rgba($gray, 0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 54px;
-      font-size: 28px;
-      font-weight: 700;
-      color: white;
-      cursor: pointer;
-      transition: color ease-in-out 0.2s, background-color ease-in-out 0.2s;
-
-      &.active,
-      &:hover {
-        background-color: $primary;
-        color: $body-bg;
-      }
-
-      &:hover,
-      &:focus,
-      &:active {
-        outline: none;
-      }
-
-      &#gravity.active {
-        animation: rotate ease 3s infinite;
-      }
-    }
-  }
-
-  [href] {
-    padding: 10px 15px;
-    border-radius: 24px;
-
-    &:hover {
-      background: $primary;
-    }
-  }
-
-  ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 7px 4px;
-
-    li {
-      display: inline-block;
-      margin: 10px 5px;
-
-      &.active {
-        [href] {
-          background: $primary;
-        }
-      }
-    }
-  }
+  line-height: 1.6;
 }
 
 #canvas > canvas {
@@ -183,7 +100,7 @@ section#home {
 
 section#works {
   position: relative;
-  padding: 33vh 0;
+  padding: 15vh 0;
   overflow-x: hidden;
   text-align: center;
 
@@ -309,7 +226,7 @@ section#about {
   width: 1150px;
   max-width: calc(100vw - 200px);
   margin: 0 auto;
-  padding: 33vh 0;
+  padding: 15vh 0;
 
   .block {
     position: relative;
@@ -338,17 +255,12 @@ section#skills {
   min-height: 100vh;
   width: 1150px;
   max-width: calc(100vw - 200px);
-  padding: 10vh 0 33vh;
+  padding: 15vh 0;
   margin: 0 auto;
   text-align: center;
 
   > * {
     position: relative;
-  }
-
-  h2 {
-    position: relative;
-    z-index: 60;
   }
 
   .skills-container {
@@ -408,10 +320,6 @@ section#skills {
       }
     }
   }
-}
-
-#funnel {
-  min-height: 100vh;
 }
 
 #alerts {
