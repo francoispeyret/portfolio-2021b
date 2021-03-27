@@ -1,16 +1,25 @@
 import Matter from 'matter-js';
+import MatterAttractors from 'matter-attractors';
+
+Matter.use(MatterAttractors);
 
 let Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
-    Composites = Matter.Composites,
-    MouseConstraint = Matter.MouseConstraint,
     Mouse = Matter.Mouse,
     World = Matter.World,
+    Common = Matter.Common,
+    Events = Matter.Events,
+    Body = Matter.Body,
     Bodies = Matter.Bodies;
 
 let engine = Engine.create(),
     world = engine.world;
+world.gravity.scale = 0;
+
+const attractionFactorMax = 5e-8;
+const attractionFactorMin = 5e-9;
+let attractionFactor = attractionFactorMin;
 
 let render = Render.create({
     element: document.getElementById('canvas'),
@@ -24,60 +33,102 @@ let render = Render.create({
         wireframes: false
     }
 });
+
 Render.run(render);
 
 let runner = Runner.create();
 Runner.run(runner, engine);
 
-let ballsLength = 30;
-let ballsIndex = 0;
-let ballsStack = Composites.stack(
-    Math.floor(ballsLength/1000),
-    Math.floor(ballsLength/1000),
-    window.innerWidth/100,
-    window.innerHeight/500,
-    20,
-    20,
-    function (x,y){
-        let randomExpo = -Math.log(Math.random());
-        let radius = randomExpo * 20 + 10;
-        let ballOptions = {
-            restitution: 0.5,
-            stiffness: 0.5,
-            density: 10,
-            render: {
-                fillStyle: '#212a31',
-                strokeStyle: null
-            }
-        };
-        if(ballsIndex % Math.floor(ballsLength / 4) === 0  && radius < 40) {
-            ballOptions.render.fillStyle = '#ff5127';
+let attractiveBody = Bodies.circle(
+    render.options.width / 2,
+    render.options.height / 2,
+    40,
+    {
+        isStatic: true,
+        render: {
+            fillStyle: '#efefef'
+        },
+        plugin: {
+            attractors: [
+                function(bodyA, bodyB) {
+                    return {
+                        x: (bodyA.position.x - bodyB.position.x) * attractionFactor,
+                        y: (bodyA.position.y - bodyB.position.y) * attractionFactor,
+                    };
+                }
+            ]
         }
-        ballsIndex++;
-        return Bodies.circle(x + radius/2, y + radius/2, radius, ballOptions);
-    }
-);
+    });
 
-World.add(world, ballsStack);
+World.add(world, attractiveBody);
 
-let ballOneOptions = {
-    radius: 20,
-    stiffness: 0.5,
-    isStatic: false,
-    render: {
-        fillStyle: '#fff',
-        strokeStyle: null
-    }
+// add some bodies that to be attracted
+const colorsRandom = [
+    '#323c43',
+    '#323c43',
+    '#323c43',
+    '#323c43',
+    '#3e4951',
+    '#3e4951',
+    '#3e4951',
+    '#49555d',
+    '#49555d',
+    '#56656e',
+    '#ff5127'
+];
+for (let i = 0; i < 150; i += 1) {
+    let body = Bodies.polygon(
+        Common.random(0, render.options.width),
+        Common.random(0, render.options.height),
+        Common.random(1, 5),
+        Common.random() > 0.9 ? Common.random(15, 25) : Common.random(5, 10),
+        {
+            frictionAir: 0,
+            render: {
+                fillStyle: colorsRandom[Math.floor(Common.random(0,colorsRandom.length))]
+            },
+        }
+    );
+
+
+    World.add(world, body);
+}
+
+// add mouse control
+let mouse = Mouse.create(render.canvas);
+
+let mouseWindowPos = {
+    x: 0,
+    y: 0
 };
 
-let ballOne = Bodies.circle(
-    window.innerWidth/2,
-    window.innerHeight - ballOneOptions.radius * 0.75 - 50,
-    ballOneOptions.radius,
-    ballOneOptions
-);
+window.addEventListener('mousemove', function (e) {
+    mouseWindowPos.x = e.clientX;
+    mouseWindowPos.y = e.clientY;
+});
 
-World.add(world, ballOne);
+window.addEventListener('mousedown', function (e) {
+    attractionFactor = attractionFactorMax;
+    Body.scale(attractiveBody, 1.25, 1.25);
+}, {
+    passive: true
+});
+window.addEventListener('mouseup', function (e) {
+    attractionFactor = attractionFactorMin;
+    Body.scale(attractiveBody, 0.8, 0.8);
+}, {
+    passive: true
+});
+
+Events.on(engine, 'afterUpdate', function() {
+    if (!mouseWindowPos.x) {
+        return;
+    }
+    Body.translate(attractiveBody, {
+        x: (mouseWindowPos.x - attractiveBody.position.x) * 0.05,
+        y: (mouseWindowPos.y - attractiveBody.position.y) * 0.05
+    });
+});
 
 const width = render.options.width,
       height = render.options.height,
@@ -88,38 +139,16 @@ const width = render.options.width,
       };
 
 World.add(world, [
-    //Bodies.rectangle(width/2, -wallsThickness/2, width, wallsThickness, wallOptions),
+    Bodies.rectangle(width/2, -wallsThickness/2, width, wallsThickness, wallOptions),
     Bodies.rectangle(width+wallsThickness/2, height/2, wallsThickness, height*3, wallOptions),
     Bodies.rectangle(-wallsThickness/2, height/2, wallsThickness, height*3, wallOptions),
     Bodies.rectangle(width/2, height+wallsThickness/2, width, wallsThickness, wallOptions)
 ]);
 
-let mouse = Mouse.create(render.canvas),
-    mouseConstraint = MouseConstraint.create(engine, {
-        mouse: mouse,
-        constraint: {
-            stiffness: 0.02,
-            render: {
-                visible: false
-            }
-        }
-    });
-
-World.add(world, mouseConstraint);
-
 mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
 mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
 
 render.mouse = mouse;
-
-Matter.Events.on(mouseConstraint, 'mousemove', function (event) {
-    const foundPhysics = Matter.Query.point(Matter.Composite.allBodies(world), event.mouse.position);
-    if(typeof foundPhysics[0] !== 'undefined') {
-        document.body.classList.add('body-hovered');
-    } else {
-        document.body.classList.remove('body-hovered');
-    }
-});
 
 let aboutEl = document.getElementById('about-img');
 let aboutBlock = Bodies.rectangle(
@@ -139,7 +168,6 @@ let aboutBlock = Bodies.rectangle(
 
 World.add(world, aboutBlock);
 
-
 let gravityChangingState = false;
 document.getElementById('gravity').addEventListener('click', () => {
     console.log(world.gravity.y);
@@ -148,12 +176,15 @@ document.getElementById('gravity').addEventListener('click', () => {
         gravityChangingState = true;
         document.body.classList.add('gravity-alert');
         document.getElementById('gravity').classList.add('active');
+        attractionFactor = -1e-6;
         setTimeout(()=> {
             world.gravity.y = 0;
+            attractionFactor = 0;
             gravityChangingState = false;
         }, 1000);
     } else if(gravityChangingState === false) {
         world.gravity.y = 1;
+        attractionFactor = attractionFactorMin;
         document.body.classList.remove('gravity-alert');
         document.getElementById('gravity').classList.remove('active');
     }

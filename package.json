@@ -55,6 +55,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "core-js": "^3.8.1",
+    "matter-attractors": "^0.1.6",
     "matter-js": "^0.16.1",
     "poly-decomp": "^0.3.0",
     "swiper": "^6.5.0"

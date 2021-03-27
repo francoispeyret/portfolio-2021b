@@ -77,7 +77,7 @@ header {
   nav#main {
     height: 54px;
     background: rgba($gray, 0.75);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px) brightness(1.4);
     border-radius: 54px;
     font-size: 16px;
   }
@@ -149,7 +149,7 @@ header {
 
 #canvas > canvas {
   position: fixed;
-  z-index: -1;
+  z-index: 1;
   top: 0;
   left: 0;
 }
