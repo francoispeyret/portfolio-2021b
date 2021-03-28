@@ -159,23 +159,11 @@ let mouseWindowPos = {
     y: 0
 };
 
-document.addEventListener('mousemove', function (e) {
-    updateMousePosition(e);
-}, {
-    passive: true
-});
+window.addEventListener('mousemove', updateMousePosition, { passive: true });
+document.querySelector('body').addEventListener('touchmove', updateMousePosition, { passive: true });
+document.querySelector('body').addEventListener('touchstart', updateMousePosition, { passive: true });
+document.querySelector('body').addEventListener('touchend', updateMousePosition, { passive: true });
 
-document.addEventListener('touchmove', function (e) {
-    updateMousePosition(e);
-}, {
-    passive: true
-});
-
-document.addEventListener('touchstart', function (e) {
-    updateMousePosition(e);
-}, {
-    passive: true
-});
 
 function updateMousePosition(e) {
     mouseWindowPos.x = e.clientX;
