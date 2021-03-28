@@ -13,6 +13,8 @@ let Engine = Matter.Engine,
     Body = Matter.Body,
     Bodies = Matter.Bodies;
 
+let loaded = false;
+
 let engine = Engine.create();
 engine.positionIterations = 4;
 let world = engine.world;
@@ -159,8 +161,10 @@ document.querySelector('body').addEventListener('touchend', updateMousePosition,
 
 
 function updateMousePosition(e) {
-    mouseWindowPos.x = e.clientX;
-    mouseWindowPos.y = e.clientY;
+    if(loaded) {
+        mouseWindowPos.x = e.clientX;
+        mouseWindowPos.y = e.clientY;
+    }
 }
 
 window.addEventListener('mousedown', function (e) {
@@ -198,7 +202,10 @@ document.getElementById('gravity').addEventListener('click', () => {
     }
 });
 
-Render.run(render);
+window.addEventListener('load', function(){
+    Render.run(render);
+    loaded = true;
+}, { passive: true });
 
 let runner = Runner.create();
 Runner.run(runner, engine);

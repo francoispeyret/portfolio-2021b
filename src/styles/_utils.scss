@@ -1,18 +1,6 @@
 
 html {
-  background-color: $body-bg;
   font-family: 'Operator Mono', sans-serif;
-  scroll-behavior: smooth;
-
-  &::-webkit-scrollbar {
-    background-color: darken($body-bg, 10%);
-    width: 12px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: $gray;
-    border-radius: 6px;
-  }
 }
 
 body {

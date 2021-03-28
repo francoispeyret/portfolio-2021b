@@ -4,242 +4,307 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>François Peyret - Portfolio 2021</title>
+    <style type="text/css">
+        html {
+            background-color: #273139;
+            scroll-behavior: smooth;
+        }
+
+        html::-webkit-scrollbar {
+            background-color: #1A2128;
+            width: 12px;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: #323c43;
+            border-radius: 6px;
+        }
+
+        body > * {
+            transition: opacity 1s ease;
+        }
+
+        .loading > *:not(#loader) {
+            opacity: 0;
+        }
+
+        #loader {
+            position: fixed;
+            z-index: 15;
+            top: calc(50% - 180px);
+            left: calc(50% - 25px);
+            display: block;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            border: 4px solid #fff;
+            border-bottom-color: #485762;
+            border-top-color: #485762;
+            animation: loader 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .loading > #loader {
+            opacity: 1;
+        }
+
+        @keyframes loader {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="loading">
 
-    <header>
-        <div class="container">
-            <nav id="main">
-                <div id="active-element"></div>
-                <ul>
-                    <li><a href="#works">Works</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-            </nav>
-            <nav id="tools">
-                <button id="gravity">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53 54"><circle cx="26.25" cy="26.75" r="5" fill="none" stroke="#fff" stroke-miterlimit="10"/><path d="M12.55,23.9a3,3,0,0,1,0,5.93,14,14,0,1,0,0-5.93Z" fill="none" stroke="#fff" stroke-miterlimit="10"/><path d="M12.55,23.9a1.16,1.16,0,0,0-.32,0,3,3,0,1,0,0,6l.32,0" fill="none" stroke="#fff" stroke-miterlimit="10"/><path d="M3.13,26.94a23.1,23.1,0,0,0,37.5,17.89A4.38,4.38,0,0,1,44,37.61a4.33,4.33,0,0,1,2.31.66A23.11,23.11,0,1,0,3.13,26.94Z" fill="none" stroke="#fff" stroke-miterlimit="10"/><path d="M40.63,44.83a4.39,4.39,0,1,0,5.64-6.56" fill="none" stroke="#fff" stroke-miterlimit="10"/></svg>
-                </button>
-            </nav>
-        </div>
-    </header>
+<div id="loader">
+</div>
 
-    <section id="home" class="page">
-        <div class="head">
-            <h1><span>Hi</span>, this is my portfolio</h1>
-            <p>(Scroll to learn about me, click to play)</p>
-        </div>
-    </section>
-
-    <section id="works" class="page">
-        <h2>Works</h2>
-        <p>
-            Here is a list of projects I have worked on.
-        </p>
-        <div class="swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide" data-hash="frenchmarket">
-                    <picture>
-                        <img
-                                style="width: 100%;"
-                                src="/public/works/frenchmarket.png"
-                                srcset="/public/works/frenchmarket.png 1x, /public/works/frenchmarket@2x.png 2x"
-                                alt=""
-                                loading="lazy"
-                        >
-                    </picture>
-                    <h3>Frenchmarket.eu</h3>
-                    <p>Refonte, intégration & maintenance</p>
-                </div>
-                <div class="swiper-slide" data-hash="officine-generale">
-                    <picture>
-                        <img
-                                style="width: 100%;"
-                                src="/public/works/officinegenerale.png"
-                                srcset="/public/works/officinegenerale.png 1x, /public/works/officinegenerale@2x.png 2x"
-                                alt=""
-                                loading="lazy"
-                        >
-                    </picture>
-                    <h3>Officine-generale.com</h3>
-                    <p>Refonte, intégration & maintenance</p>
-                </div>
-                <div class="swiper-slide" data-hash="fenom">
-                    <picture>
-                        <img
-                                style="width: 100%;"
-                                src="/public/works/fenom.png"
-                                srcset="/public/works/fenom.png 1x, /public/works/fenom@2x.png 2x"
-                                alt=""
-                                loading="lazy"
-                        >
-                    </picture>
-                    <h3>Fenom.com</h3>
-                    <p>Refonte, intégration & maintenance</p>
-                </div>
-                <div class="swiper-slide" data-hash="verdiel">
-                    <picture>
-                        <img
-                                style="width: 100%;"
-                                src="/public/works/verdiel.png"
-                                srcset="/public/works/verdiel.png 1x, /public/works/verdiel@2x.png 2x"
-                                alt=""
-                                loading="lazy"
-                        >
-                    </picture>
-                    <h3>Verdiel.fr</h3>
-                    <p>Refonte, intégration & maintenance</p>
-                </div>
-                <div class="swiper-slide" data-hash="emilehenry">
-                    <picture>
-                        <img
-                                style="width: 100%;"
-                                src="/public/works/emilehenry.png"
-                                srcset="/public/works/emilehenry.png 1x, /public/works/emilehenry@2x.png 2x"
-                                alt=""
-                                loading="lazy"
-                        >
-                    </picture>
-                    <h3>Shop.emile-henry.com</h3>
-                    <p>Refonte, intégration & maintenance</p>
-                </div>
-                <div class="swiper-slide" data-hash="nailmatic">
-                    <picture>
-                        <img
-                                style="width: 100%;"
-                                src="/public/works/nailmatic.png"
-                                srcset="/public/works/nailmatic.png 1x, /public/works/nailmatic@2x.png 2x"
-                                alt=""
-                                loading="lazy"
-                        >
-                    </picture>
-                    <h3>Nailmatic.com</h3>
-                    <p>Création, intégration & maintenance</p>
-                </div>
-            </div>
-
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-
-            <!-- If we need scrollbar -->
-            <div class="swiper-scrollbar">
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="page">
-        <h2>Skills</h2>
-        <p>
-            Work on eshop creation. <br>
-            Here is a table of my daily tools :
-        </p>
-        <div class="skills-container">
-            <div class="skill">
-                <h3>Sass</h3>
-                <em>1</em>
-                <strong>Sa</strong>
-            </div>
-            <span class="skill-empty"></span>
-            <span class="skill-empty"></span>
-            <span class="skill-empty"></span>
-            <div class="skill">
-                <h3>Html5</h3>
-                <em>2</em>
-                <strong>Ht</strong>
-            </div>
-            <div class="skill">
-                <h3>JavaScript ES6</h3>
-                <em>3</em>
-                <strong>Js</strong>
-            </div>
-            <span class="skill-empty"></span>
-            <div class="skill">
-                <h3>Php</h3>
-                <em>4</em>
-                <strong>Ph</strong>
-            </div>
-            <div class="skill">
-                <h3>Webpack</h3>
-                <em>5</em>
-                <strong>We</strong>
-            </div>
-            <div class="skill">
-                <h3>React</h3>
-                <em>6</em>
-                <strong>Re</strong>
-            </div>
-            <div class="skill">
-                <h3>Adobe</h3>
-                <em>7</em>
-                <strong>Ad</strong>
-            </div>
-            <div class="skill">
-                <h3>Prestashop</h3>
-                <em>8</em>
-                <strong>Ps</strong>
-            </div>
-            <div class="skill">
-                <h3>Cypress.io</h3>
-                <em>9</em>
-                <strong>Cy</strong>
-            </div>
-            <div class="skill">
-                <h3>Git</h3>
-                <em>10</em>
-                <strong>Gi</strong>
-            </div>
-            <div class="skill">
-                <h3>Canvas</h3>
-                <em>11</em>
-                <strong>Ca</strong>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="page">
-        <div class="block">
-            <img
-                    loading="lazy"
-                    id="about-img"
-                    src="/public/portrait.jpg"
-                    srcset="/public/portrait.jpg 1x, /public/portrait@2x.jpg 2x"
-                    alt="Portrait de François PEYRET">
-            <div class="text">
-                <h2>About me</h2>
-                <p>
-                    Webdeveloper living in France. <br>
-                    Work at Ekypia Agency from Saint-Étienne. <br>
-                    Love test things, discover new methods and constantly improve in the way of a craftsman.
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="container">
+<header>
+    <div class="container">
+        <nav id="main">
+            <div id="active-element"></div>
             <ul>
-                <li>
-                    francoispeyret.fr created in 2021
-                </li>
-                <li>
-                    <a href="https://twitter.com/peyretfr">Twitter</a>
-                </li>
-                <li>
-                    <a href="https://github.com/francoispeyret">Github</a>
-                </li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
-        </div>
-    </footer>
-
-    <div id="alerts">
-        <div class="alert one"></div>
-        <div class="alert two"></div>
-        <div class="alert three"></div>
-        <div class="alert four"></div>
+        </nav>
+        <nav id="tools">
+            <button id="gravity">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53 54">
+                    <circle cx="26.25" cy="26.75" r="5" fill="none" stroke="#fff" stroke-miterlimit="10"/>
+                    <path d="M12.55,23.9a3,3,0,0,1,0,5.93,14,14,0,1,0,0-5.93Z" fill="none" stroke="#fff"
+                          stroke-miterlimit="10"/>
+                    <path d="M12.55,23.9a1.16,1.16,0,0,0-.32,0,3,3,0,1,0,0,6l.32,0" fill="none" stroke="#fff"
+                          stroke-miterlimit="10"/>
+                    <path d="M3.13,26.94a23.1,23.1,0,0,0,37.5,17.89A4.38,4.38,0,0,1,44,37.61a4.33,4.33,0,0,1,2.31.66A23.11,23.11,0,1,0,3.13,26.94Z"
+                          fill="none" stroke="#fff" stroke-miterlimit="10"/>
+                    <path d="M40.63,44.83a4.39,4.39,0,1,0,5.64-6.56" fill="none" stroke="#fff" stroke-miterlimit="10"/>
+                </svg>
+            </button>
+        </nav>
     </div>
-    <div id="canvas"></div>
+</header>
+
+<section id="home" class="page">
+    <div class="head">
+        <h1><span>Hi</span>, this is my portfolio</h1>
+        <p>(Scroll to learn about me, click to play)</p>
+    </div>
+</section>
+
+<section id="works" class="page">
+    <h2>Works</h2>
+    <p>
+        Here is a list of projects I have worked on.
+    </p>
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide" data-hash="frenchmarket">
+                <picture>
+                    <img
+                            style="width: 100%;"
+                            src="/public/works/frenchmarket.png"
+                            srcset="/public/works/frenchmarket.png 1x, /public/works/frenchmarket@2x.png 2x"
+                            alt=""
+                            loading="lazy"
+                    >
+                </picture>
+                <h3>Frenchmarket.eu</h3>
+                <p>Refonte, intégration & maintenance</p>
+            </div>
+            <div class="swiper-slide" data-hash="officine-generale">
+                <picture>
+                    <img
+                            style="width: 100%;"
+                            src="/public/works/officinegenerale.png"
+                            srcset="/public/works/officinegenerale.png 1x, /public/works/officinegenerale@2x.png 2x"
+                            alt=""
+                            loading="lazy"
+                    >
+                </picture>
+                <h3>Officine-generale.com</h3>
+                <p>Refonte, intégration & maintenance</p>
+            </div>
+            <div class="swiper-slide" data-hash="fenom">
+                <picture>
+                    <img
+                            style="width: 100%;"
+                            src="/public/works/fenom.png"
+                            srcset="/public/works/fenom.png 1x, /public/works/fenom@2x.png 2x"
+                            alt=""
+                            loading="lazy"
+                    >
+                </picture>
+                <h3>Fenom.com</h3>
+                <p>Refonte, intégration & maintenance</p>
+            </div>
+            <div class="swiper-slide" data-hash="verdiel">
+                <picture>
+                    <img
+                            style="width: 100%;"
+                            src="/public/works/verdiel.png"
+                            srcset="/public/works/verdiel.png 1x, /public/works/verdiel@2x.png 2x"
+                            alt=""
+                            loading="lazy"
+                    >
+                </picture>
+                <h3>Verdiel.fr</h3>
+                <p>Refonte, intégration & maintenance</p>
+            </div>
+            <div class="swiper-slide" data-hash="emilehenry">
+                <picture>
+                    <img
+                            style="width: 100%;"
+                            src="/public/works/emilehenry.png"
+                            srcset="/public/works/emilehenry.png 1x, /public/works/emilehenry@2x.png 2x"
+                            alt=""
+                            loading="lazy"
+                    >
+                </picture>
+                <h3>Shop.emile-henry.com</h3>
+                <p>Refonte, intégration & maintenance</p>
+            </div>
+            <div class="swiper-slide" data-hash="nailmatic">
+                <picture>
+                    <img
+                            style="width: 100%;"
+                            src="/public/works/nailmatic.png"
+                            srcset="/public/works/nailmatic.png 1x, /public/works/nailmatic@2x.png 2x"
+                            alt=""
+                            loading="lazy"
+                    >
+                </picture>
+                <h3>Nailmatic.com</h3>
+                <p>Création, intégration & maintenance</p>
+            </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar">
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="page">
+    <h2>Skills</h2>
+    <p>
+        Work on eshop creation. <br>
+        Here is a table of my daily tools :
+    </p>
+    <div class="skills-container">
+        <div class="skill">
+            <h3>Sass</h3>
+            <em>1</em>
+            <strong>Sa</strong>
+        </div>
+        <span class="skill-empty"></span>
+        <span class="skill-empty"></span>
+        <span class="skill-empty"></span>
+        <div class="skill">
+            <h3>Html5</h3>
+            <em>2</em>
+            <strong>Ht</strong>
+        </div>
+        <div class="skill">
+            <h3>JavaScript ES6</h3>
+            <em>3</em>
+            <strong>Js</strong>
+        </div>
+        <span class="skill-empty"></span>
+        <div class="skill">
+            <h3>Php</h3>
+            <em>4</em>
+            <strong>Ph</strong>
+        </div>
+        <div class="skill">
+            <h3>Webpack</h3>
+            <em>5</em>
+            <strong>We</strong>
+        </div>
+        <div class="skill">
+            <h3>React</h3>
+            <em>6</em>
+            <strong>Re</strong>
+        </div>
+        <div class="skill">
+            <h3>Adobe</h3>
+            <em>7</em>
+            <strong>Ad</strong>
+        </div>
+        <div class="skill">
+            <h3>Prestashop</h3>
+            <em>8</em>
+            <strong>Ps</strong>
+        </div>
+        <div class="skill">
+            <h3>Cypress.io</h3>
+            <em>9</em>
+            <strong>Cy</strong>
+        </div>
+        <div class="skill">
+            <h3>Git</h3>
+            <em>10</em>
+            <strong>Gi</strong>
+        </div>
+        <div class="skill">
+            <h3>Canvas</h3>
+            <em>11</em>
+            <strong>Ca</strong>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="page">
+    <div class="block">
+        <img
+                loading="lazy"
+                id="about-img"
+                src="/public/portrait.jpg"
+                srcset="/public/portrait.jpg 1x, /public/portrait@2x.jpg 2x"
+                alt="Portrait de François PEYRET">
+        <div class="text">
+            <h2>About me</h2>
+            <p>
+                Webdeveloper living in France. <br>
+                Work at Ekypia Agency from Saint-Étienne. <br>
+                Love test things, discover new methods and constantly improve in the way of a craftsman.
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <ul>
+            <li>
+                francoispeyret.fr created in 2021
+            </li>
+            <li>
+                <a href="https://twitter.com/peyretfr">Twitter</a>
+            </li>
+            <li>
+                <a href="https://github.com/francoispeyret">Github</a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+<div id="alerts">
+    <div class="alert one"></div>
+    <div class="alert two"></div>
+    <div class="alert three"></div>
+    <div class="alert four"></div>
+</div>
+<div id="canvas"></div>
 </body>
 </html>
