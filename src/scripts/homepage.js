@@ -160,17 +160,27 @@ let mouseWindowPos = {
 };
 
 window.addEventListener('mousemove', function (e) {
-    mouseWindowPos.x = e.clientX;
-    mouseWindowPos.y = e.clientY;
+    updateMousePosition(e);
 }, {
     passive: true
 });
-window.addEventListener('click', function (e) {
-    mouseWindowPos.x = e.clientX;
-    mouseWindowPos.y = e.clientY;
+
+window.addEventListener('touchmove', function (e) {
+    updateMousePosition(e);
 }, {
     passive: true
 });
+
+window.addEventListener('touchstart', function (e) {
+    updateMousePosition(e);
+}, {
+    passive: true
+});
+
+function updateMousePosition(e) {
+    mouseWindowPos.x = e.clientX;
+    mouseWindowPos.y = e.clientY;
+}
 
 window.addEventListener('mousedown', function (e) {
     attractionFactor = attractionFactorMax;
