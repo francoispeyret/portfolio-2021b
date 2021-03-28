@@ -51,39 +51,6 @@ World.add(world, [
     Bodies.rectangle(width/2, height+wallsThickness/2, width, wallsThickness, wallOptions)
 ]);
 
-
-const colorsRandom = [
-    '#323c43',
-    '#323c43',
-    '#323c43',
-    '#323c43',
-    '#3e4951',
-    '#3e4951',
-    '#3e4951',
-    '#49555d',
-    '#49555d',
-    '#56656e',
-    '#ff5127'
-];
-
-for (let i = 0; i < 123; i++) {
-    let body = Bodies.polygon(
-        Common.random(0, render.options.width),
-        Common.random(0, render.options.height),
-        Common.random(1, 5),
-        Common.random() > 0.9 ? Common.random(15, 25) : Common.random(5, 10),
-        {
-            frictionAir: 0,
-            render: {
-                fillStyle: colorsRandom[Math.floor(Common.random(0,colorsRandom.length))]
-            },
-        }
-    );
-
-    World.add(world, body);
-}
-
-
 let attractiveBody = Bodies.circle(
     render.options.width / 2,
     render.options.height / 2 - 150,
@@ -123,6 +90,36 @@ let aboutBlock = Bodies.rectangle(
 
 World.add(world, aboutBlock);
 
+const colorsRandom = [
+    '#323c43',
+    '#323c43',
+    '#323c43',
+    '#323c43',
+    '#3e4951',
+    '#3e4951',
+    '#3e4951',
+    '#49555d',
+    '#49555d',
+    '#56656e',
+    '#ff5127'
+];
+
+for (let i = 0; i < 123; i++) {
+    let body = Bodies.polygon(
+        Common.random(0, render.options.width),
+        Common.random(0, render.options.height),
+        Common.random(1, 5),
+        Common.random() > 0.9 ? Common.random(15, 25) : Common.random(5, 10),
+        {
+            frictionAir: 0,
+            render: {
+                fillStyle: colorsRandom[Math.floor(Common.random(0,colorsRandom.length))]
+            },
+        }
+    );
+
+    World.add(world, body);
+}
 
 Events.on(engine, 'afterUpdate', function() {
     if (!mouseWindowPos.x) {
