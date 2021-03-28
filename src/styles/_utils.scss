@@ -13,6 +13,14 @@ body {
   }
 }
 
+::-moz-selection { /* Code for Firefox */
+  background: rgba($gray, 0.4);
+}
+
+::selection {
+  background: rgba($gray, 0.4);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -37,7 +45,7 @@ h2 {
 }
 
 p {
-  color: #949ba0;
+  color: $body-color;
   font-size: 18px;
   font-style: italic;
   line-height: 1.6;
