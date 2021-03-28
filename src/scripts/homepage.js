@@ -35,6 +35,8 @@ let render = Render.create({
     }
 });
 
+render.setPixelRatio(window.devicePixelRatio);
+
 
 const width = render.options.width,
       height = render.options.height,
