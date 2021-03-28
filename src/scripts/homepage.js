@@ -159,19 +159,19 @@ let mouseWindowPos = {
     y: 0
 };
 
-window.addEventListener('mousemove', function (e) {
+document.addEventListener('mousemove', function (e) {
     updateMousePosition(e);
 }, {
     passive: true
 });
 
-window.addEventListener('touchmove', function (e) {
+document.addEventListener('touchmove', function (e) {
     updateMousePosition(e);
 }, {
     passive: true
 });
 
-window.addEventListener('touchstart', function (e) {
+document.addEventListener('touchstart', function (e) {
     updateMousePosition(e);
 }, {
     passive: true
