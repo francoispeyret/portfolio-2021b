@@ -25,7 +25,7 @@ function updateMenu(id) {
     if(menuItemActive) {
         activeElement.style.opacity = 1;
         activeElement.style.width = menuItemActive.offsetWidth + 'px';
-        activeElement.style.left = menuItemActive.offsetLeft + 'px';
+        activeElement.style.left = menuItemActive.offsetLeft * window.devicePixelRatio + 'px';
     } else {
         activeElement.style.opacity = 0;
     }
