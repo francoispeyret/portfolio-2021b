@@ -1,0 +1,63 @@
+@media screen and (max-width: 992px) {
+  section#skills,
+  section#works,
+  section#about,
+  section#home,
+  header .container {
+    width: calc(100vw - 30px);
+    max-width: calc(100vw - 30px);
+    margin: 0 15px;
+  }
+
+  header {
+    .container {
+      justify-content: center;
+    }
+
+    nav#main {
+      font-size: 16px;
+    }
+
+    [href] {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+
+  section#works .swiper-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  section#skills .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-empty {
+    display: none;
+  }
+
+  section#about #about-img,
+  section#about .text {
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin: 0;
+  }
+
+  section#home h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  section#works h3 {
+    font-size: 24px;
+  }
+
+  p {
+    position: relative;
+    z-index: 50;
+  }
+}

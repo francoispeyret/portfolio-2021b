@@ -165,6 +165,12 @@ window.addEventListener('mousemove', function (e) {
 }, {
     passive: true
 });
+window.addEventListener('click', function (e) {
+    mouseWindowPos.x = e.clientX;
+    mouseWindowPos.y = e.clientY;
+}, {
+    passive: true
+});
 
 window.addEventListener('mousedown', function (e) {
     attractionFactor = attractionFactorMax;

@@ -1,0 +1,64 @@
+
+html {
+  background-color: $body-bg;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    background-color: darken($body-bg, 10%);
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 6px;
+  }
+}
+
+body {
+  color: $body-color;
+  margin: 0;
+  padding: 0;
+
+  &.body-hovered {
+    cursor: grab;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Operator Mono', sans-serif;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: color ease 0.2s, background ease 0.2s;
+
+  &:hover {
+    color: white;
+  }
+}
+
+h2 {
+  position: relative;
+  z-index: 60;
+  color: white;
+  font-size: 62px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+p {
+  color: #949ba0;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+#canvas > canvas {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
