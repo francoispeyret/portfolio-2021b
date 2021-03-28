@@ -139,16 +139,7 @@ Events.on(engine, 'afterUpdate', function() {
         x: aboutBlockPos.x,
         y: aboutBlockPos.y
     });
-    /*Body.set(aboutBlock, 'position', {
-        x: aboutBlockPos.x,
-        y: aboutBlockPos.y
-    });*/
 });
-
-window.addEventListener('resize', function(){
-    render.canvas.width = window.innerWidth;
-    render.canvas.height = window.innerHeight;
-}, { passive: true });
 
 // add mouse control
 let mouse = Mouse.create(render.canvas);
