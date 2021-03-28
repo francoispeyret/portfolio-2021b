@@ -1,6 +1,7 @@
 
 html {
   background-color: $body-bg;
+  font-family: 'Operator Mono', sans-serif;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
@@ -26,7 +27,6 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: 'Operator Mono', sans-serif;
 }
 
 a {
