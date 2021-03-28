@@ -16,6 +16,7 @@ header {
   }
 
   nav#main {
+    position: relative;
     height: 54px;
     background: rgba($gray, 0.75);
     backdrop-filter: blur(15px) brightness(1.4);
