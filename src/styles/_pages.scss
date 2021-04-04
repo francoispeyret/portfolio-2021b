@@ -28,70 +28,22 @@ section#home {
 
 section#works {
   position: relative;
-  padding: 15vh 0;
+  padding: 5vh 0;
   overflow-x: hidden;
   text-align: center;
 
-  .swiper-container {
-    position: relative;
-    z-index: 75;
-    width: 1150px;
-    max-width: calc(100vw - 200px);
-    overflow: visible;
-    padding-top: 7vh;
-    padding-bottom: 7vh;
-    text-align: left;
-  }
-
-  .swiper-scrollbar {
-    position: absolute;
-    left: 12.5%;
-    bottom: 0;
-    display: block;
-    width: 75%;
-    height: 15px;
-    background-color: $gray;
-    border-radius: 15px;
-  }
-
-  .swiper-scrollbar-drag {
-    height: 15px;
-    background: $primary;
-    border-radius: 15px;
-  }
-
-  h3 {
-    font-size: 36px;
-    font-weight: 400;
-    font-style: italic;
-    margin: 1rem 0 0;
-  }
-
   h3,
   p {
-    color: $body-color;
     transition: color ease-in-out 0.3s;
   }
 
   .swiper-slide {
-    will-change: transform, opacity;
-    filter: grayscale(1);
-    opacity: 0.25;
-    transition: all ease-in-out 0.3s;
-
     p {
       font-size: 16px;
     }
   }
 
   picture {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    width: 100%;
-    height: 60vh;
-    max-height: 640px;
-
     & > img {
       position: absolute;
       will-change: transform;
@@ -103,38 +55,6 @@ section#works {
         animation-play-state: running;
       }
     }
-  }
-
-  .swiper-slide-active {
-    opacity: 1;
-    filter: grayscale(0);
-
-    h3 {
-      transition-delay: 0.25s;
-      color: white;
-    }
-  }
-
-  .swiper-button-prev,
-  .swiper-button-next {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 5;
-    display: block;
-    height: 100%;
-    width: auto;
-    cursor: pointer;
-  }
-
-  .swiper-button-next {
-    right: -100%;
-    left: 100%;
-  }
-
-  .swiper-button-prev {
-    left: -100%;
-    right: 100%;
   }
 }
 
@@ -150,11 +70,18 @@ section#works {
   }
 }
 
+section#blog {
+  position: relative;
+  padding: 5vh 0;
+  overflow-x: hidden;
+  text-align: center;
+}
+
 section#about {
   width: 1150px;
   max-width: calc(100vw - 200px);
   margin: 0 auto;
-  padding: 15vh 0;
+  padding: 12.5vh 0 15vh;
 
   .block {
     position: relative;
@@ -180,10 +107,9 @@ section#about {
 }
 
 section#skills {
-  min-height: 100vh;
   width: 1150px;
   max-width: calc(100vw - 200px);
-  padding: 15vh 0;
+  padding: 10vh 0;
   margin: 0 auto;
   text-align: center;
 

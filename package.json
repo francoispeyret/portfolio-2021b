@@ -58,6 +58,7 @@
     "matter-attractors": "^0.1.6",
     "matter-js": "^0.16.1",
     "poly-decomp": "^0.3.0",
+    "showdown": "^1.9.1",
     "swiper": "^6.5.0"
   }
 }

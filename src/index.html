@@ -10,12 +10,12 @@
             scroll-behavior: smooth;
         }
 
-        html::-webkit-scrollbar {
+        ::-webkit-scrollbar {
             background-color: #1A2128;
             width: 12px;
         }
 
-        html::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb {
             background-color: #323c43;
             border-radius: 6px;
         }
@@ -68,9 +68,10 @@
         <nav id="main">
             <div id="active-element"></div>
             <ul>
-                <li><a href="#works">Works</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="/works" class="link-local">Works</a></li>
+                <li><a href="/blog" class="link-local">Blog</a></li>
+                <li><a href="/skills" class="link-local">Skills</a></li>
+                <li><a href="/about" class="link-local">About</a></li>
             </ul>
         </nav>
         <nav id="tools">
@@ -102,7 +103,7 @@
     <p>
         Here is a list of projects I have worked on.
     </p>
-    <div class="swiper-container">
+    <div class="swiper-container" data-slide-per-view="1">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
@@ -194,6 +195,63 @@
         </div>
     </div>
 </section>
+
+<section id="blog" class="page">
+    <h2>Blog</h2>
+    <p>
+        A little section for share tips and thinks.
+    </p>
+    <div class="swiper-container" data-slide-per-view="2">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide" data-hash="blog1">
+                <a href="/blog#article1" class="link-blog" data-markdown="/public/blog/article1.md">
+                    <picture>
+                        <img
+                                style="width: 100%;"
+                                src="/public/blog/https.jpg"
+                                alt=""
+                                loading="lazy"
+                        >
+                    </picture>
+                    <h3>Certbot SSL and Https</h3>
+                    <p>Learn to use certbot and put SSL protocol in your server</p>
+                </a>
+            </div>
+            <div class="swiper-slide" data-hash="blog2">
+                <a href="/blog#article2" class="link-blog" data-markdown="/public/blog/article2.md">
+                    <picture>
+                        <img
+                                style="width: 100%;"
+                                src="/public/blog/nginx.jpg"
+                                alt=""
+                                loading="lazy"
+                        >
+                    </picture>
+                    <h3>Your first nginx server</h3>
+                    <p>Step by step procedure to install a server on Ubuntu 20.04</p>
+                </a>
+            </div>
+            <div class="swiper-slide" data-hash="more">
+
+            </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar">
+        </div>
+    </div>
+</section>
+
+<div id="blog-modal-container">
+    <div id="blog-modal-image"></div>
+    <div id="blog-modal-content"></div>
+</div>
+<div id="blog-modal-background"></div>
 
 <section id="skills" class="page">
     <h2>Skills</h2>

@@ -1,7 +1,7 @@
 
 header {
   position: fixed;
-  z-index: 100;
+  z-index: 145;
   top: 30px;
   left: 0;
   right: 0;
@@ -20,7 +20,7 @@ header {
     height: 54px;
     background: rgba($gray, 0.75);
     backdrop-filter: blur(15px) brightness(1.4);
-    border-radius: 54px;
+    border-radius: 27px;
     font-size: 16px;
   }
 

@@ -6,4 +6,5 @@ import '../styles/index.scss';
 import './loading';
 import './navigation';
 import './homepage';
-import './works';
+import './blog';
+import './swiper';
