@@ -29,16 +29,42 @@
     margin-bottom: 0;
   }
 
-  h1,h2,h3 {
+  h1,h2,h3,h4,h5 {
     color: #fff;
   }
 
+  h4 {
+    font-size: 24px;
+    margin-top: 2.5rem;
+  }
+
+  h5 {
+    font-size: 16px;
+    margin-top: 2.5rem;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
   code {
-    display: block;
+    font-size: 16px;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 4px 10px;
     background: $body-bg;
+  }
+
+  pre > code {
+    display: block;
     padding: 15px;
     margin: 15px 0;
-    border-radius: 15px;
+
+    &.language-shell {
+      &::first-word {
+        color: $primary;
+      }
+    }
   }
 }
 
@@ -55,9 +81,16 @@
 }
 
 #blog-modal-content {
-  padding: 27px 54px;
+  padding: 12px 39px;
+  margin: 15px 15px 25px;
   overflow-y: scroll;
-  height: calc(100% - 20vh);
+  height: calc(100% - 20vh - 40px);
+
+  &::-webkit-scrollbar {
+    background-color: darken($gray, 2.5%);
+    width: 12px;
+    border-radius: 6px;
+  }
   &::-webkit-scrollbar-thumb {
     background-color: $primary;
   }

@@ -6,12 +6,20 @@ import 'swiper/swiper.scss';
 const swiperEls = document.querySelectorAll('.swiper-container');
 
 for(let swiper of swiperEls) {
+    const slidesPerView = parseFloat(swiper.getAttribute('data-slide-per-view') || 1);
     new Swiper(swiper, {
         // Optional parameters
         loop: false,
         direction: 'horizontal',
-        slidesPerView: parseFloat(swiper.getAttribute('data-slide-per-view') || 1),
-        spaceBetween: 60,
+        slidesPerView: 1,
+        spaceBetween: 20,
+
+        breakpoints: {
+            769: {
+                slidesPerView: slidesPerView,
+                spaceBetween: 60,
+            }
+        },
 
         navigation: {
             nextEl: '.swiper-button-next',

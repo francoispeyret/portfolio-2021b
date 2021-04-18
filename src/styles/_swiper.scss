@@ -42,6 +42,7 @@ body .swiper-slide {
   }
 }
 
+body [data-slide-per-view="2"] .swiper-slide-active + .swiper-slide,
 body .swiper-slide-active {
   opacity: 1;
   filter: grayscale(0);

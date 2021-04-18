@@ -1,6 +1,7 @@
 @media screen and (max-width: 992px) {
   section#skills,
   section#works,
+  section#blog,
   section#about,
   section#home,
   header .container {
@@ -20,13 +21,17 @@
     }
   }
 
-  section#works .swiper-container {
+  body .swiper-container {
     width: 100%;
     max-width: 100%;
   }
 
   section#skills .skills-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  section#skills .skills-container > .skill > strong {
+    font-size: 62px;
   }
 
   .skill-empty {
@@ -37,6 +42,7 @@
   section#about .text {
     max-width: 100%;
     flex: 0 0 100%;
+    height: auto;
     margin: 0;
   }
 
@@ -55,5 +61,17 @@
   p {
     position: relative;
     z-index: 50;
+  }
+
+  #blog-modal-container {
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+  }
+
+  #blog-modal-content {
+    padding: 0 10px;
+    margin: 0;
+    height: calc(100% - 20vh - 15px);
   }
 }
