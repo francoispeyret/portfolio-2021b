@@ -22,7 +22,7 @@ world.gravity.scale = 0;
 
 let gyroscope = new Gyroscope({ frequency: 60 });
 
-gyroscope.addEventListener("reading", (e) => {
+setInterval(() => {
     console.log(`Angular velocity along the X-axis ${gyroscope.x}`);
     console.log(`Angular velocity along the Y-axis ${gyroscope.y}`);
     console.log(`Angular velocity along the Z-axis ${gyroscope.z}`);
@@ -37,8 +37,8 @@ gyroscope.addEventListener("reading", (e) => {
     }
     console.log(`Gravity scale: ${world.gravity.scale}`);
     console.log(`Gravity X: ${world.gravity.x}`);
-    console.log(`Gravity Y: ${world.gravity.y}`);Ò
-});
+    console.log(`Gravity Y: ${world.gravity.y}`);
+}, 1000 / gyroscope.frequency);Ò
 gyroscope.start();
 
 
