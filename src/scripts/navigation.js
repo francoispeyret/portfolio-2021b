@@ -17,7 +17,6 @@ document.addEventListener('scroll', function (e){
     const newSectionCurrent = updateSectionCurrent();
     if(newSectionCurrent !== sectionCurrent) {
         sectionCurrent = newSectionCurrent;
-        window.history.pushState({},"", '/'+sectionCurrent);
         updateMenu();
     }
 }, { passive: true });
