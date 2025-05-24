@@ -20,27 +20,6 @@ engine.positionIterations = 4;
 let world = engine.world;
 world.gravity.scale = 0;
 
-let gyroscope = new Gyroscope({ frequency: 60 });
-
-setInterval(() => {
-    console.log(`Angular velocity along the X-axis ${gyroscope.x}`);
-    console.log(`Angular velocity along the Y-axis ${gyroscope.y}`);
-    console.log(`Angular velocity along the Z-axis ${gyroscope.z}`);
-    world.gravity.x = gyroscope.x * 0.0001;
-    world.gravity.y = gyroscope.y * 0.0001;
-    world.gravity.scale = Math.sqrt(world.gravity.x * world.gravity.x + world.gravity.y * world.gravity.y);
-    if (world.gravity.scale > 0.1) {
-        world.gravity.scale = 0.1;
-    }
-    if (world.gravity.scale < 0.0001) {
-        world.gravity.scale = 0.0001;
-    }
-    console.log(`Gravity scale: ${world.gravity.scale}`);
-    console.log(`Gravity X: ${world.gravity.x}`);
-    console.log(`Gravity Y: ${world.gravity.y}`);
-}, 1000 / gyroscope.frequency);Ò
-gyroscope.start();
-
 
 let gravityState = true;
 let gravityChangingState = false;
